@@ -8,19 +8,53 @@
 }
 
 .column {
-  margin: 8px;
-  width: calc(100% - 16px);
+  display: inline-block;
 
-  img {
-    height: 500px;
-    object-fit: cover;
+  &:first-child {
+    margin: 0;
     width: 100%;
   }
 
-  h3 {
-    margin: 16px 0 8px 16px;
-    padding: 0;
-    text-align: left;
+  &:last-child {
+    margin: 0 16px;
+    width: calc(100% - 32px);
+  }
+
+  @media only screen and (min-width: $cut) {
+    &:first-child {
+      margin: 0 8px;
+      width: calc(100% - 16px);
+    }
+
+    &:last-child {
+      margin: 0 8px;
+      width: calc(100% - 16px);
+    }
+  }
+
+  img {
+    height: auto;
+    object-fit: cover;
+    width: 100%;
+
+    @media only screen and (min-width: $cut) {
+      height: 500px;
+    }
+  }
+
+  h2 {
+    margin-top: 32px;
+    padding-top: 0;
+
+    @media only screen and (min-width: $cut) {
+      margin-top: 0;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: #555;
+    border-bottom: 1px solid #555;
   }
 }
 
@@ -28,19 +62,32 @@
   text-align: center;
   font-size: 60px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin: 0;
+
   p, li {
+    text-align: justify;
     font-size: 16px;
   }
+
+  p:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
   ul {
     text-align: left;
     margin: 0;
   }
+
   @media only screen and (min-width: $cut) {
+    flex-direction: row;
     flex-wrap: nowrap;
     font-size: 75px;
+    padding-top: 48px;
+    margin: 0 8px;
   }
 }
 
@@ -49,17 +96,44 @@
   margin: 5px 8px 72px;
 }
 
-.offers {
+.section {
   text-align: center;
-  margin: 5px auto;
+  margin: 4px 16px;
+}
+
+.flex-list {
+  position: relative;
+  margin: 1em;
+  overflow: hidden;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style-type: none;
+
+    li {
+      text-align: center;
+
+      &:not(:last-child)::after {
+        content: "•";
+        padding: 0 0.5em;
+      }
+    }
+  }
 }
 
 .zoomImg {
-  border-radius: 4px;
+  border-radius: 0;
   cursor: pointer;
   transition: 0.3s;
 
   &:hover {
     opacity: 0.7;
+  }
+
+  @media only screen and (min-width: $cut) {
+    border-radius: 4px;
   }
 }
