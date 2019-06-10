@@ -35,10 +35,15 @@
   img {
     height: auto;
     object-fit: cover;
+    position: relative;
+    top: 0;
+    transform: translateY(0);
     width: 100%;
 
     @media only screen and (min-width: $cut) {
-      height: 500px;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
     }
   }
 
